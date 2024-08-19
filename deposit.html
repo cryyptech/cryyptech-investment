@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>CRYYPTECH</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(34, 48, 59);
+            padding: 10px 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: fixed;
+          top: 0;
+          width: 100%;
+          border-bottom: solid 1px rgb(34, 48, 59);
+          background-color: rgba(58, 93, 121, 0.932);
+          padding: 15px 0 0 0;
+          z-index: 1000;
+        }
+
+        .back {
+            position: absolute;
+            left: 16px;
+            margin-bottom: 20px;
+            color: rgb(181, 217, 252);
+            cursor: pointer;
+        }
+
+        .container {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(121deg, rgb(56, 89, 116) 21%, rgb(50, 78, 102) 42%, rgb(46, 64, 78) 61%, rgb(34, 48, 59) 84%);
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 44px;
+            padding-top: 0;
+            margin-top: 0px;
+            display: flex;
+        }
+
+        .incon {
+            background-color: rgb(34, 48, 59);
+            border-radius: 10px;
+            padding: 20px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h3 {
+            color: white;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .para {
+            color: rgba(241, 241, 241, 0.774);
+            font-size: 13px;
+            margin-top: 3px;
+        }
+
+        .body {
+            font-weight: bold;
+            background-color: rgba(58, 93, 121, 0.932);
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+
+        .body:hover{
+            background-color: rgba(58, 93, 121, 0.932);
+        }
+
+        .innercon {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 16px 10px;
+            font-size: 20px;
+            color: rgb(36, 36, 36);
+        }
+
+        .innercon img {
+            height: 30px;
+            width: 30px;
+            margin-right: 10px;
+        }
+
+        .container2 {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            margin: 170px 0 ;
+            padding: 20px;
+            background-color: transparent;
+            border-radius: 8px;
+        }
+
+        .num {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px 0;
+            width: 100%;
+        }
+
+        .num input[type="number"], .num select, .num button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .x{
+          display: none;
+        }
+
+        .btnwall, .btnwal{
+            display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          width: 100%;
+          margin-bottom: 5px;
+        }
+
+        .num button {
+            background-color: rgb(56, 89, 116);
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .num button:hover {
+            background-color: rgb(45, 70, 90);
+        }
+
+        .customAlert {
+          display: none;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          padding: 20px;
+          background-color: rgba(0, 0, 0, 0.753);
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 1000;
+        }
+
+        .alertCon {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          color: white;
+          background-color: #273e50;
+          padding: 30px 20px;
+          text-align: center;
+          border-radius: 10px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          
+        }
+        hr{
+          width: 100%;
+          color: black;
+          background-color: black;
+          margin: 11px 0;
+
+        }
+
+        .feebtn{
+          padding: 10px;
+          margin: 30px 10px;
+          margin-bottom: -15px;
+          border-radius: 10px;
+          border: none;
+          background-color: #3a5d79;
+          font-size: 12px;
+          color: white;
+          height: 60px;
+          width: 100px;
+
+        }
+
+        label {
+          display: block;
+          margin: 10px 0 5px;
+          color: white;
+          font-size: 14px;
+        }
+
+        .containera {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .num {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          width: 100%;
+          margin-bottom: 10px;
+        }
+
+        .selcountry {
+          width: 100%;
+          padding: 10px;
+          border-radius: 5px;
+          border: none;
+          font-size: 16px;
+          margin-top: 5px;
+        }
+
+        input {
+          width: 100%;
+          padding: 10px;
+          border-radius: 5px;
+          border: none;
+          font-size: 16px;
+          margin-bottom: 15px;
+        }
+
+        .submit-btn {
+          width: 100%;
+          padding: 12px;
+          border-radius: 5px;
+          border: none;
+          font-size: 16px;
+          background-color: #273e50;
+          color: white;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+          background-color: #213749;
+        }
+
+        #cancel:hover{
+          background-color: #d6d6d663;
+        }
+
+        .container0 {
+          display: none;
+          flex-direction: column;
+          align-items: center;
+          margin: 60px 0;
+          margin-bottom: 10px;
+          background-color: transparent;
+          padding: 30px 10px 20px 10px;
+        }
+
+        .containerr {
+          display: flex;
+          justify-content: center;
+          margin-bottom: 50px;
+          width: 100%;
+        }
+
+        .dropdown {
+              position: relative;
+              display: inline-block;
+              width: 100%;
+              max-width: 400px;
+          }
+
+          .dropdown-btn {
+              background-color: rgba(45, 71, 94, 0.932);
+              color: white;
+              padding: 12px 16px;
+              border: none;
+              cursor: pointer;
+              width: 100%;
+              text-align: left;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              border-radius: 8px;
+          }
+
+          .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: rgb(34, 48, 59);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 5;
+            width: 100%;
+            border-radius: 8px;
+            margin-top: 5px;
+        }
+
+        .dropdown.show .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-option {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .dropdown-option img {
+            height: 20px;
+            width: 20px;
+            margin-right: 10px;
+        }
+
+        .dropdown-option:hover {
+            background-color: rgba(58, 93, 121, 0.932);
+        }.dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: rgb(34, 48, 59);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 5;
+            width: 100%;
+            border-radius: 8px;
+            margin-top: 5px;
+        }
+
+        .dropdown.show .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-option {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .dropdown-option img {
+            height: 20px;
+            width: 20px;
+            margin-right: 10px;
+        }
+
+        .dropdown-option:hover {
+            background-color: rgba(58, 93, 121, 0.932);
+        }
+
+        .containers {
+          margin-top: -20px;
+          margin: 0;
+        }
+
+        .qr-con{
+          display: flex;
+          flex-direction: column;
+          margin: 0 auto;
+          padding: 0 10px;
+          background-color: white;
+          border-radius: 10px;
+          width: 350px;
+          height: 350px;
+        }
+          
+        .qr-code {
+          display: block;
+          margin: 0 auto;
+          margin-bottom: 10px;
+          height: 300px;
+          width: 300px;
+        }
+        
+        .address {
+          text-align: center;
+          color: rgb(153, 153, 153);
+          margin: 0 auto;
+          margin-bottom: 10px;
+          word-break: break-all;
+        }
+
+        .pro{
+          text-align: center;
+          margin: 30px auto;
+          color: rgb(205, 228, 253);
+        }
+          
+        .buttons {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          font-size: 18px;
+          font-weight: bold;
+          color: white;
+        }
+
+        .button {
+          background-color: #282c34;
+          border: none;
+          padding: 10px 20px;
+          margin-bottom: 3px;
+          border-radius: 40px;
+          cursor: pointer;
+          width: 80px;
+          height: 80px;
+        }
+        .button:hover {
+          background-color: #3a5d79;
+        }
+
+        .button .fa-copy {
+          font-size: 30px;
+          color: #b4dcfc;
+        }
+
+        .fa-copy:hover {
+          color: #b4dcfc;
+        }
+
+        .deposit {
+          background-color: #282c34;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 5px;
+          cursor: pointer;
+          text-align: center;
+          margin-top: 20px;
+        }
+        .deposit:hover {
+          background-color: #383e49;
+        }
+
+        footer {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: rgba(58, 93, 121, 0.932);
+        padding: 0 0 5px 0;
+      }
+
+      .footicn {
+        font-size: 23px;
+        color: #030c1d;
+      }
+
+      .footdiv{
+        display: flex;
+        padding: 12px 40px;
+        align-items: center;
+      }
+    </style>
+</head>
+<body>
+    <header>
+        <i class="fa fa-chevron-left back" id="back"></i>
+        <h3>Deposit</h3>
+    </header>
+
+    <div class="container" id="firstcon">
+        <div class="incon">
+            <h3>Select Payment Method</h3>
+            <hr>
+            <div class="body">
+                <div class="innercon bottom" id="bankpay">
+                    <img src="img/deposit.PNG" alt="Deposit">
+                    <div>
+                        <p>Buy With Bank</p>
+                        <p class="para">Buy Crypto With Bank</p>
+                    </div>
+                </div>
+            </div>
+            <div class="body">
+                <div class="innercon bottom" id="cryptopay">
+                    <img src="img/deposit.PNG" alt="Deposit">
+                    <div>
+                        <p>Deposit With Crypto</p>
+                        <p class="para">Have Crypto? Deposit directly</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container2" id="bankpayopt">
+        <div class="num">
+            <input type="number" placeholder="Enter amount" id="inpt">
+            <select id="currency" class="selcountry">
+                <option value="val1">USD</option>
+                <option value="val2">PHP</option>
+                <option value="val3">GBP</option>
+                <option value="val4">AUD</option>
+            </select>
+        </div>
+        <div class="num">
+            <select id="method" class="selmethod">
+                <option value="vala" selected disabled>Select Payment Method</option>
+                <option value= "walltran">E-wallet Transfer</option>
+                <option value="valc" disabled>Bank Account</option>
+            </select>
+        </div>
+        <div class="num x" id="E-wallet" style="display: none;">
+            <p style="color: white;">select E-wallet: </p>
+          <div class="btnwall">
+            <button class="btn">Cash App</button>
+          </div>
+          <div class="btnwall">
+            <button class="btn">PayPal</button>
+          </div>
+          <div class="btnwall">
+            <button class="btn">Gcash</button>
+          </div>
+          <div class="btnwal">
+            <button class="btn" style="background-color: grey; color: lightgrey;">Coin.ph</button>
+          </div>
+
+        </div>
+        <div class="num y" id="submeet">
+            <button>Proceed to Payment</button>
+        </div>
+    </div>
+
+    <div class="container0" id="cryptopayopt">
+      <div class="containerr">
+        <div class="dropdown">
+          <button class="dropdown-btn" onclick="toggleDropdown()">Select coin : <img src="img/bitcoin.png" alt="${text}" style="height: 20px; width: 20px; margin-right: -40px;">Bitcoin <span>&#x25BC;</span></button>
+          <div class="dropdown-content">
+            <div class="dropdown-option froms" onclick="selectOption('Bitcoin', 'img/bitcoin.png')">
+              <img src="img/bitcoin.png" alt="Bitcoin">
+              <span>Bitcoin</span>
+            </div>
+            <div class="dropdown-option froms" onclick="selectOption('Binance Coin', 'img/bnb.PNG')">
+              <img src="img/bnb.PNG" alt="Binance Coin">
+              <span>Binance Coin</span>
+            </div>
+            <div class="dropdown-option froms" onclick="selectOption('Ethereum', 'img/etherum.png')">
+              <img src="img/etherum.png" alt="Ethereum">
+              <span>Ethereum</span>
+            </div>
+            <div class="dropdown-option froms" onclick="selectOption('USDT Tether', 'img/usdt.png')">
+              <img src="img/usdt.png" alt="USDT Tether">
+              <span>USDT Tether</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="containers">
+        <div class="qr-con" id="qr-con" >
+          <img src="img/btcqr.png" class="qr-code" alt="QR Code" id="coinimg">
+          <div class="address" id="walladdress">
+            bc1qyymeu0j3s5ddzhdzasqxr5q4vc5w92mt0ev4wz
+          </div>
+        </div>
+        <p class="pro">Send only <span id="cointext"> Bitcoin (BTC)</span> to this address.<br>Sending any other coins may result in permanent loss.</p>
+        <div class="buttons">
+          <button class="button" onclick="copyAddress()">
+            <i class="fa fa-copy"></i>
+          </button>
+          Copy
+        </div>
+      </div>
+    </div>
+    
+    <footer>
+      <div class="footdiv note" onclick="window.location.href = 'notification.html'"><i class="fa-solid fa-bell footicn nt" ></i></div>
+      <div class="footdiv home" onclick="window.location.href = 'wallet.html'"><i class="fa-solid fa-house footicn hm"></i></div>
+      <div class="footdiv set" onclick="window.location.href = 'setting.html'"><i class="fa-solid fa-gear footicn st"></i></div>
+    </footer>
+  
+    <div class="customAlert" id="alertconn">
+      <div class="alertCon">
+          <p>unable to proceed</p>
+          <hr>
+          <p>Error depositing fund, please contact your investment manager for futher assistance</p>
+          <div>
+            <button class="feebtn" id="cancel">cancel</button>
+          </div>
+      </div>
+    </div>
+
+    <script>
+    const footdivs = document.querySelectorAll('.footdiv');
+
+    footdivs.forEach((footdiv) => {
+      footdiv.addEventListener('mouseover', () => {
+        footdiv.style.backgroundColor = 'rgb(34, 48, 59)';
+        footdiv.querySelector('.footicn').style.color = '#bdd3fd'
+      });
+
+      footdiv.addEventListener('mouseout', () => {
+        footdiv.style.backgroundColor = '';
+        footdiv.querySelector('.footicn').style.color = ''
+      })
+
+      footdiv.addEventListener('click', () => {
+        footdiv.style.backgroundColor = 'rgb(34, 48, 59)';
+        footdiv.querySelector('.footicn').style.color = '#bdd3fd'
+      })
+    })
+
+      const bank = document.getElementById('bankpay');
+      const cryptos = document.getElementById('cryptopay');
+      const bankopt = document.getElementById('bankpayopt');
+      const cryptoopt = document.getElementById('cryptopayopt');
+      const firstcon = document.getElementById('firstcon');
+      const dropdownMethod = document.getElementById('method');
+
+      bank.addEventListener('click', () => {
+        bankopt.style.display = 'flex';
+        firstcon. style.display = 'none'
+      });
+
+      cryptos.addEventListener('click', () => {
+        cryptoopt.style.display = 'flex';
+        firstcon.style.display = 'none'
+      });
+
+      document.getElementById('back').addEventListener('click', () => {
+        if (firstcon.style.display === 'none'){
+          document.getElementById('alertconn').style.display = 'none';
+          cryptoopt.style.display = 'none';
+          bankopt.style.display = 'none';
+          firstcon. style.display = 'flex'
+        } else {
+          window.history.back();
+        }
+        
+      })
+
+       dropdownMethod.addEventListener('change', () => {
+        const selected = dropdownMethod.value;
+
+        if (dropdownMethod.value === 'walltran') {
+            document.getElementById('E-wallet').style.display = 'flex'
+        }
+       })
+
+      let amtent = false
+      let bankselc = false
+
+      var plans = document.querySelectorAll('.btnwall');
+      plans.forEach(plan => {
+        plan.addEventListener('click', () => {
+          if (prevsel) {
+            prevsel.style.border = "none";
+            prevbx.style.background ='rgb(58, 93, 121)'
+          }
+
+          prevbx = plan.querySelector('.btn')
+          prevbx.style.background = 'rgb(48, 98, 139)';
+
+          plan.style.border = "solid 2px #fff";
+          bankselc = true
+          prevsel = plan
+        })
+      })
+      
+      const submit = document.getElementById('submeet');
+      const amount = document.getElementById('inpt');
+      
+      submit.addEventListener('click', () => {
+        
+        let amountselc = amount.value !== "";
+        if (amountselc && bankselc) {
+          document.getElementById('alertconn').style.display = 'flex';
+        } else {
+          alert('Please fill in all required fields before proceeding.');
+        }
+
+      })
+
+      document.getElementById('cancel').addEventListener('click', () => {
+        document.getElementById('alertconn').style.display = 'none'
+      })
+
+      //set crypto page
+      function toggleDropdown() {
+        document.querySelector('.dropdown').classList.toggle('show');
+      }
+
+      function selectOption(text, imgSrc) {
+        const button = document.querySelector('.dropdown-btn');
+        button.innerHTML = `Select coin : <img src="${imgSrc}" alt="${text}" style="height: 20px; width: 20px; margin-right: -40px;">${text} <span>&#x25BC;</span>`;
+        toggleDropdown(); 
+
+        let cointext = document.getElementById('cointext');
+        let walladdress = document.getElementById('walladdress');
+        let coinimg = document.getElementById('coinimg');
+        if (text === 'Bitcoin') {
+          cointext.innerHTML = 'Bitcoin (BTC)';
+          coinimg.src = 'img/btcqr.png';
+          walladdress.innerHTML = 'bc1qyymeu0j3s5ddzhdzasqxr5q4vc5w92mt0ev4wz'
+        } else if (text === 'Ethereum') {
+          cointext.innerHTML = 'Ethereum (ETH)';
+          coinimg.src = 'img/ethqr.png';
+          walladdress.innerHTML = '0x1a8FC51D2D5aC90b0A26d64382e155dDD8939FfB'
+        }else if (text === 'Binance Coin') {
+          cointext.innerHTML = 'Binance Coin (BNB)';
+          coinimg.src = 'img/bnbqr.png';
+          walladdress.innerHTML = 'bnb14a78uqj983z2t2ztz8q58smetl675alf9eklwv'
+        }else if (text === 'USDT Tether') {
+          cointext.innerHTML = 'USDT Tether (USDT)';
+          coinimg.src = 'img/usdtqr.png';
+          walladdress.innerHTML = 'THmmZvW3MtiFegDAqKSMaYuuaUMVeYtoV'
+        };
+      }
+
+      function copyAddress() {
+      const address = document.querySelector('.address').textContent;
+      navigator.clipboard.writeText(address).then(function() {
+        alert('Address copied to clipboard!');
+      }, function(err) {
+        alert('Failed to copy address: ', err);
+      });
+    }
+
+    
+
+    let prevsel = null;
+      let prevbx = null;
+      
+    </script>
+
+</body>
+</html>

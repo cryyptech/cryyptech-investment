@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>School Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: rgba(34, 48, 59);
+      background: linear-gradient(121deg, rgb(56, 89, 116) 21%, rgb(50, 78, 102) 42%, rgb(46, 64, 78) 61%,rgb(34, 48, 59) 84%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 44px;
+      padding-top: 0;
+    }
+
+    .container {
+      background-color: transparent;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      max-width: 400px;
+      width: 100%;
+			overflow: hidden;
+    }
+
+    .login-form, .signup-form {
+      text-align: center;
+    }
+
+    .login-form h1 {
+      margin-top: 0;
+      margin-bottom: 30px;
+      font-size: 24px;
+      color: #000;
+    }
+
+    .signup-form h1 {
+      margin-top: 0;
+      margin-bottom: 30px;
+      font-size: 24px;
+      color: #000;
+    }
+
+    .messagediv{
+      background-color: hsl(327, 90%, 28%);
+      color: white;
+      padding: 10px 20px;
+      margin: 10px;
+      border-radius: 5px;
+      font-size: 1rem;
+      opacity: 0;
+      animation: fadeOut 7s forwards;
+    }
+
+    .input-group, .input-group2 {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+		.input-group2 {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+		.input-group2{
+			display: none;
+		}
+
+    .input-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+		.input-group2 label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .input-group input {
+      width: calc(100% - 20px);
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+		.input-group2 input {
+      width: calc(100% - 20px);
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .login-btn {
+      background-color: #ec55d9;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 10px;
+      box-shadow: 2px 8px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    .login-btn:hover {
+      background-color: #da4dcb;
+    }
+
+    .options {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+    }
+
+    .options span {
+      margin-left: 10px;
+      color: #48d4ff;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .options span:hover {
+      text-decoration: underline;
+    }
+
+    .customAlert {
+          display: none;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          padding: 20px;
+          background-color: rgba(0, 0, 0, 0.753);
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 1000;
+        }
+
+        .alertCon {
+          display: flex;
+          justify-content: center;
+          /* align-items: center; */
+          flex-direction: column;
+          color: white;
+          background-color: #273e50;
+          padding: 30px 20px 30px 20px;
+          margin-right: 40px;
+          text-align: left;
+          border-radius: 10px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          
+        }
+
+        .alertCon .head {
+          text-align: center;
+          margin: 0;
+        }
+
+        hr{
+          width: 100%;
+          color: black;
+          background-color: black;
+          margin: 19px 0;
+
+        }
+
+        .feebtn{
+          padding: 13px 50px;
+          margin: 10px 10px;
+          border-radius: 10px;
+          border: none;
+          background-color: #3a5d79;
+          font-size: 13px;
+          color: white;
+
+        }
+
+        #resend{
+          text-decoration: underline;
+          color: #48d4ff;
+          background-color: transparent;
+          border: none;
+          font-size: 18px;
+          margin-left: 13px;
+        }
+    .forgotd{
+      display: flex;
+      justify-content: left;
+    }
+
+    .forgot{
+      background-color: transparent;
+      border: none;
+      text-decoration: underline;
+      color: #48d4ff;
+    }
+
+    .forgot:hover{
+      color: #20b1dd;
+      cursor: pointer;
+    }
+    
+  </style>
+</head>
+<body >
+  <div class="container">
+    <div class="login-form" id="login-form" >
+      <h1>LOGIN</h1>
+      <form method="post" action="">
+        <div class="messagediv" id="signinmessage" style="display: none;"></div>
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required minlength="8">
+          <p id="warn2" style="display: none; color: red;">*password must be more than 8 characters</p>
+        </div>
+        <div class="forgotd">
+          <button class="forgot" id="forgot" type="button">forgot password?</button>
+        </div>
+        <button type="submit" class="login-btn" id="submitsignin">Login</button>
+        <div class="options">
+          <p>don't have an account?</p>
+          <span class="create-account" id="signup">SIGN UP</span>
+        </div>
+      </form>
+    </div>
+    <div class="signup-form" id="signup-form" style="display:none;">
+      <h1>CREATE ACCOUNT</h1>
+      <form method="post" action="">
+        <div class="messagediv" id="signupmessage" style="display: none;"></div>
+        <div class="input-group">
+          <label for="student-id">Username</label>
+          <input type="text" id="username" name="student-id" required>
+        </div>
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="email" id="remail" name="email" required>
+        </div>
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" id="rpassword" name="password" required minlength="8">
+          <p id="warn" style="display: none; color: red;">*password must be more than 8 characters</p>
+        </div>
+        <button type="submit" class="login-btn" id="submitsignup">sign up</button>
+        <div class="options">
+          <P>already have an account?</P>
+          <span class="create-account" id="signin">SIGN IN</span>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="customAlert" id="alertconn">
+    <div class="alertCon">
+        <p class="head">Email Not Verified</p>
+        <hr>
+        <p>Email Verification link has been sent to your email</p>
+        <p>Verify email and confirm</p>
+        <div>
+          <button class="feebtn" onclick="window.location.href = 'index.html'" >confirm</button>
+        </div>
+        <p>didn't recieve link? (<span id="timer"></span>) <button id="resend"> Resend Link</button></p>
+    </div>
+  </div>
+
+  <script>
+    const signUplink=document.getElementById('signup');
+    const signInlink=document.getElementById('signin');
+    const signInForm=document.getElementById('login-form');
+    const signUpForm=document.getElementById('signup-form');
+
+    signUplink.addEventListener('click',function(){
+        signInForm.style.display="none";
+        signUpForm.style.display="block";
+    })
+    signInlink.addEventListener('click', function(){
+        signInForm.style.display="block";
+        signUpForm.style.display="none";
+    })
+
+    const input = document.getElementById("rpassword");
+
+    input.addEventListener("input", () => {
+      if (input.value.length < 8) {
+        document.getElementById('warn').style.display = 'block'
+      } else {
+        document.getElementById('warn').style.display = 'none'
+      }
+    });
+
+    const input2 = document.getElementById("password");
+
+    input2.addEventListener("input", () => {
+      if (input2.value.length < 8) {
+        document.getElementById('warn2').style.display = 'block'
+      } else {
+        document.getElementById('warn2').style.display = 'none'
+      }
+    });
+
+  </script>
+  <script type="module" src="login.js">
+  </script>
+</body>
+</html>

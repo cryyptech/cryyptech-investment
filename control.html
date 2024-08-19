@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      body {
+        background-color: rgb(174, 253, 190);
+        font-family: 'Roboto', sans-serif;
+        color: #343a40;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .con {
+        background-color: #194b7c;
+        padding: 60px 50px 100px 50px;
+        border-radius: 15px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+      }
+
+      h1 {
+        color: #67b3ff;
+        font-size: 28px;
+        text-align: center;
+        margin-bottom: 25px;
+        font-weight: 600;
+      }
+
+      label {
+        font-size: 14px;
+        margin-bottom: 5px;
+        display: block;
+        color: #67b3ff;
+      }
+
+      input[type="number"], input[type="text"] {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 20px;
+        border: 1px solid #ced4da;
+        border-radius: 8px;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+      }
+
+      input[type="number"]:focus, input[type="text"]:focus {
+        outline: none;
+        border-color: #007bff;
+      }
+
+      input[type="number"]::-webkit-inner-spin-button,
+      input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      input[type="number"]:hover, input[type="text"]:hover {
+        border-color: #007bff;
+      }
+
+      input[type="number"]::placeholder, input[type="text"]::placeholder {
+        color: #adb5bd;
+      }
+
+      button.submit {
+        width: 100%;
+        padding: 12px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button.submit:hover {
+        background-color: #0056b3;
+      }
+    </style>
+</head>
+<body>
+    <div class="con">
+      <h1>HOMEPAGE</h1>
+
+      <label for="main-balance">Main Balance</label>
+      <input type="number" id="mainbalance" name="main-balance" placeholder="0.00">
+
+      <label for="btc-balance">BTC Balance</label>
+      <input type="number" id="btcbal" name="btc-balance" placeholder="0.00">
+
+      <label for="btc-value">BTC Value</label>
+      <input type="number" id="btcval" name="btc-value" placeholder="0.00">
+
+      <label for="bnb-balance">BNB Balance</label>
+      <input type="number" id="bnbbal" name="bnb-balance" placeholder="0.00">
+
+      <label for="bnb-value">BNB Value</label>
+      <input type="number" id="bnbval" name="bnb-value" placeholder="0.00">
+
+      <label for="eth-balance">ETH Balance</label>
+      <input type="number" id="ethbal" name="eth-balance" placeholder="0.00">
+
+      <label for="eth-value">ETH Value</label>
+      <input type="number" id="ethval" name="eth-value" placeholder="0.00">
+
+      <label for="usdt-balance">USDT Balance</label>
+      <input type="number" id="usdtbal" name="usdt-balance" placeholder="0.00">
+
+      <label for="usdt-value">USDT Value</label>
+      <input type="number" id="usdtval" name="usdt-value" placeholder="0.00">
+
+      <h1>NOTIFICATION</h1>
+
+      <label for="notification">Notification</label>
+      <input type="text" id="notify" name="notification" placeholder="Notification">
+
+      <h1>WITHDRAWAL</h1>
+
+      <label for="withdraw">Withdrawal Fee</label>
+      <input type="number" id="withdraw" name="withdraw" placeholder="0.00">
+
+      <button class="submit" id="submit">Submit</button>
+      <button class="submit" id="back">Go Back</button>
+    </div>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+      import { getDatabase, set, ref, get, child } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
+      import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+
+      // Firebase configuration
+      const firebaseConfig = {
+          apiKey: "AIzaSyB4MlVTAn20BKgG49nIhaB5dP08ycV6Tdg",
+          authDomain: "cryyptechh.firebaseapp.com",
+          projectId: "cryyptechh",
+          storageBucket: "cryyptechh.appspot.com",
+          messagingSenderId: "70442732438",
+          appId: "1:70442732438:web:f4cf4c8043c3180421abb7"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const db = getDatabase(app);
+      const auth = getAuth(app);
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const submitButton = document.getElementById('submit');
+        const backButton = document.getElementById('back');
+
+        onAuthStateChanged(auth, (user) => {
+          if (user) {
+            const userId = user.uid;
+
+            // Retrieve existing values from Firebase
+            const extradataRef = ref(db, 'extradata/' + userId);
+            get(extradataRef).then((snapshot) => {
+              if (snapshot.exists()) {
+                const extradata = snapshot.val();
+
+                document.getElementById('mainbalance').value = extradata.mainbal || "0.00";
+                document.getElementById('btcbal').value = extradata.btcbal || "0.00";
+                document.getElementById('btcval').value = extradata.btcval || "0.00";
+                document.getElementById('bnbbal').value = extradata.bnbbal || "0.00";
+                document.getElementById('bnbval').value = extradata.bnbval || "0.00";
+                document.getElementById('ethbal').value = extradata.ethbal || "0.00";
+                document.getElementById('ethval').value = extradata.ethval || "0.00";
+                document.getElementById('usdtbal').value = extradata.usdtbal || "0.00";
+                document.getElementById('usdtval').value = extradata.usdtval || "0.00";
+                document.getElementById('withdraw').value = extradata.withdrawalfee || "0.00";
+              } else {
+                console.log("No extradata found, using default values.");
+              }
+            }).catch((error) => {
+              console.error("Error fetching extradata:", error);
+            });
+
+            submitButton.addEventListener('click', (event) => {
+              event.preventDefault();
+
+              const notificationText = document.getElementById('notify').value;
+              const timestamp = new Date().getTime();
+
+              // Save NOTIFICATION to Firebase Realtime Database
+              const notificationsRef = ref(db, 'notifications/' + userId);
+              get(notificationsRef).then(snapshot => {
+                let notifications = snapshot.exists() ? snapshot.val() : [];
+
+                // Add the new notification
+                notifications.push({ text: notificationText, timestamp: timestamp });
+
+                // Save the updated notifications list to Firebase
+                set(notificationsRef, notifications)
+                  .then(() => {
+                    console.log('Notification added successfully.');
+
+                    // Update session storage
+                    localStorage.setItem('notifications', JSON.stringify(notifications));
+
+                    // Clear input
+                    document.getElementById('notify').value = "";
+                  })
+                  .catch((error) => console.error('Error adding notification:', error));
+              });
+
+              // Get current values or fallback to existing session storage values
+              let mainbal = document.getElementById('mainbalance').value;
+              let btcbal = document.getElementById('btcbal').value;
+              let btcval = document.getElementById('btcval').value;
+              let bnbbal = document.getElementById('bnbbal').value;
+              let bnbval = document.getElementById('bnbval').value;
+              let ethbal = document.getElementById('ethbal').value;
+              let ethval = document.getElementById('ethval').value;
+              let usdtbal = document.getElementById('usdtbal').value;
+              let usdtval = document.getElementById('usdtval').value;
+              let withdraw = document.getElementById('withdraw').value;
+
+              // Save selections to Firebase Realtime Database
+              set(ref(db, 'extradata/' + userId), {
+                mainbal: mainbal,
+                btcbal: btcbal, 
+                btcval: btcval,
+                bnbbal: bnbbal, 
+                bnbval: bnbval,
+                ethbal: ethbal, 
+                ethval: ethval,
+                usdtbal: usdtbal, 
+                usdtval: usdtval,
+                withdrawalfee: withdraw
+              })
+              .then(() => {
+                console.log('Preferences saved successfully.');
+
+                // Retrieve saved preferences from Firebase and store them in localStorage
+                return get(child(ref(db), 'extradata/' + userId))
+                  .then((snapshot) => {
+                    if (snapshot.exists()) {
+                      const extradata = snapshot.val();
+                      localStorage.setItem('mainbal', extradata.mainbal);
+                      localStorage.setItem('btcbal', extradata.btcbal);
+                      localStorage.setItem('btcval', extradata.btcval);
+                      localStorage.setItem('bnbbal', extradata.bnbbal);
+                      localStorage.setItem('bnbval', extradata.bnbval);
+                      localStorage.setItem('ethbal', extradata.ethbal);
+                      localStorage.setItem('ethval', extradata.ethval);
+                      localStorage.setItem('usdtbal', extradata.usdtbal);
+                      localStorage.setItem('usdtval', extradata.usdtval);
+                      localStorage.setItem('withdrawalfee', extradata.withdrawalfee);
+                      console.log('Preferences retrieved and stored in localStorage.');
+                      alert('Preferences retrieved and stored in localStorage.');
+                    } else {
+                      console.log("No preferences data available.");
+                    }
+                  });
+              })
+              .catch((error) => {
+                console.error('Error saving or retrieving preferences:', error);
+              });
+            });
+          } else {
+            console.error('User is not authenticated.');
+          }
+        });
+
+        backButton.addEventListener('click', () => {
+          window.history.back();
+        });
+      });
+    </script>
+</body>
+</html>

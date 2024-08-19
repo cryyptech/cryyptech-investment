@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>cryyptech</title>
+    <style>
+
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        body{
+        background-color: rgb(34, 48, 59);
+        padding: 10px 0;
+        font-family: Arial, sans-serif;
+        }
+
+        header{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: rgba(58, 93, 121, 0.932);
+        padding: 15px 0;
+        }
+
+        .container{
+          margin: 60px 0;
+          padding: 0 7px;
+        }
+
+        .setcontainer{
+          background-color: rgba(58, 93, 121, 0.932);
+          padding: 1px 9px;
+          margin:  40px 10px;
+          border-radius: 8px;
+          overflow: hidden;
+        }
+
+        .innercon{
+          display: flex;
+          align-items: center;
+          width: 100%;
+          padding: 16px 10px;
+          border-bottom: 0.5px solid #ccc;
+          font-size: 20px;
+          color: rgb(223, 223, 223);
+        }
+
+        a{
+          text-decoration: none;
+          margin: 0;
+          padding: 0;
+        }
+
+        .bottom{
+          border: none;
+        }
+
+        .disabled {
+          pointer-events: none;
+          opacity: 0.5; 
+        }
+
+        .fa-brands{
+          margin-right: 8px;
+        }
+
+        footer {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: rgba(58, 93, 121, 0.932);
+        padding: 0 0 5px 0;
+      }
+
+      .footicn {
+        font-size: 23px;
+        color: #030c1d;
+      }
+
+      .footdiv{
+        display: flex;
+        padding: 12px 40px;
+        align-items: center;
+      }
+
+      .set{
+        background-color: rgb(34, 48, 59);
+      }
+
+      .footdiv:hover{
+        background-color: rgb(34, 48, 59);
+      }
+    </style>
+</head>
+<body>
+    <header>
+        <h3>Settings</h3>
+    </header>
+    <div class="container">
+      <div class="setcontainer">
+        <a href="account.html">
+          <div class="innercon bottom">
+            <img src="" alt="">
+            <p>my account</p>
+          </div>
+        </a>
+      </div>
+      <div class="setcontainer">
+        <a href="general.html">
+          <div class="innercon">
+            <img src="" alt="">
+            <p>preference</p>
+          </div>
+        </a>
+          <a href="security.html">
+          <div class="innercon">
+            <img src="" alt="">
+            <p>security</p>
+          </div>
+        </a>
+        <a href="notification.html">
+          <div class="innercon bottom">
+            <img src="" alt="">
+            <p>notification</p>
+          </div>
+        </a>
+      </div>
+      <div class="setcontainer">
+        <a href="facebook.html" target="_blank">
+          <div class="innercon">
+            <i class="fa-brands fa-facebook"></i>
+            <p>facebook</p>
+          </div>
+        </a>
+        <a href="instagram.html" target="_blank">
+          <div class="innercon">
+            <i class="fa-brands fa-instagram"></i>
+            <p>instagram</p>
+          </div>
+        </a>
+        <!-- <a href="twitter.html" target="_blank"> -->
+          <div class="innercon bottom disabled">
+            <i class="fa-brands fa-x-twitter"></i>
+            <p>twitter</p>
+          </div>
+        <!-- </a> -->
+      </div>
+    </div>
+    <footer>
+      <div class="footdiv note" onclick="window.location.href = 'notification.html'"><i class="fa-solid fa-bell footicn nt" ></i></div>
+      <div class="footdiv home" onclick="window.location.href = 'wallet.html'"><i class="fa-solid fa-house footicn hm"></i></div>
+      <div class="footdiv set" onclick="window.location.href = 'setting.html'"><i class="fa-solid fa-gear footicn st"></i></div>
+    </footer>
+  </body>
+  <script>
+    const footdivs = document.querySelectorAll('.footdiv');
+
+    footdivs.forEach((footdiv) => {
+      footdiv.addEventListener('mouseover', () => {
+        footdiv.style.backgroundColor = 'rgb(34, 48, 59)';
+        footdiv.querySelector('.footicn').style.color = '#bdd3fd'
+      });
+
+      footdiv.addEventListener('mouseout', () => {
+        footdiv.style.backgroundColor = '';
+        footdiv.querySelector('.footicn').style.color = ''
+      })
+
+      footdiv.addEventListener('click', () => {
+        footdiv.style.backgroundColor = 'rgb(34, 48, 59)';
+        footdiv.querySelector('.footicn').style.color = '#bdd3fd'
+      })
+    })
+    </script>
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+      import {getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+
+      // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyB4MlVTAn20BKgG49nIhaB5dP08ycV6Tdg",
+      authDomain: "cryyptechh.firebaseapp.com",
+      projectId: "cryyptechh",
+      storageBucket: "cryyptechh.appspot.com",
+      messagingSenderId: "70442732438",
+      appId: "1:70442732438:web:f4cf4c8043c3180421abb7"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+window.onload = function() {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+    } else {
+      window.location.href = 'index.html';
+    }
+  });
+}
+
+    </script>
+</body>
+</html>

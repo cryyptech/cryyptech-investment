@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Cryyptech</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(34, 48, 59);
+            font-family: Arial, sans-serif;
+            padding-top: 60px; /* Adjust for fixed header */
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(58, 93, 121, 0.932);
+            padding: 15px 0;
+            z-index: 1000;
+        }
+
+      .back {
+        position: absolute;
+        left: 18px;
+        font-size: 20px;
+        color: rgb(181, 217, 252);
+        cursor: pointer;
+      }
+
+        .container {
+            margin: 20px 0;
+            padding: 0 10px;
+        }
+
+        .body {
+            background-color: rgba(58, 93, 121, 0.932);
+            padding: 10px 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .innercon {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 16px 10px;
+            font-size: 20px;
+            color: rgb(223, 223, 223);
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px 5px;
+            color: white;
+            font-size: 14px;
+        }
+
+        .changepass {
+            display: block;
+            width: calc(100% - 20px);
+            margin: 0 auto 10px auto;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+        }
+
+        .val {
+            margin-right: 13px;
+            color: rgb(48, 47, 47);
+            background-color: transparent;
+            font-size: 25px;
+            font-weight: bold;
+            border: none;
+        }
+
+        .submit-btn {
+            display: block;
+            width: calc(100% - 20px);
+            margin: 20px auto 0 auto;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+            background-color: rgb(39, 62, 80);
+            color: white;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background-color: rgb(33, 55, 73);
+        }
+
+        footer {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: rgba(58, 93, 121, 0.932);
+        padding: 0 0 5px 0;
+      }
+
+      .footicn {
+        font-size: 23px;
+        color: #030c1d;
+      }
+
+      .footdiv{
+        display: flex;
+        padding: 12px 40px;
+        align-items: center;
+      }
+    </style>
+</head>
+<body>
+    <header>
+        <i class="fa fa-chevron-left back" id="back"></i>
+        <h3>Security</h3>
+    </header>
+
+    <div class="container">
+        <div class="body">
+            <div class="innercon" id="passbtn">
+                <p>Change Password</p>
+                <p class="val">&gt;</p>
+            </div>
+        </div>
+
+        <div class="body" id="passbdy" style="display: none;">
+            <label for="current-password">Old Password</label>
+            <input type="password" id="current-password" class="changepass" placeholder="Current Password">
+            <label for="new-password">New Password</label>
+            <input type="password" id="new-password" class="changepass" placeholder="New Password">
+            <label for="confirm-password">Confirm New Password</label>
+            <input type="password" id="confirm-password" class="changepass" placeholder="Confirm New Password">
+            <button class="submit-btn" id="submit-btn">Submit</button>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footdiv note" onclick="window.location.href = 'notification.html'"><i class="fa-solid fa-bell footicn nt" ></i></div>
+        <div class="footdiv home" onclick="window.location.href = 'wallet.html'"><i class="fa-solid fa-house footicn hm"></i></div>
+        <div class="footdiv set" onclick="window.location.href = 'setting.html'"><i class="fa-solid fa-gear footicn st"></i></div>
+      </footer>
+    </body>
+    <script>
+        document.getElementById('back').addEventListener('click', () => {
+              window.history.back();
+          })
+
+          
+      const footdivs = document.querySelectorAll('.footdiv');
+  
+      footdivs.forEach((footdiv) => {
+        footdiv.addEventListener('mouseover', () => {
+          footdiv.style.backgroundColor = 'rgb(34, 48, 59)';
+          footdiv.querySelector('.footicn').style.color = '#bdd3fd'
+        });
+  
+        footdiv.addEventListener('mouseout', () => {
+          footdiv.style.backgroundColor = '';
+          footdiv.querySelector('.footicn').style.color = ''
+        })
+  
+        footdiv.addEventListener('click', () => {
+          footdiv.style.backgroundColor = 'rgb(34, 48, 59)';
+          footdiv.querySelector('.footicn').style.color = '#bdd3fd'
+        })
+      })
+
+      let counter = 0
+
+        document.getElementById('passbtn').addEventListener('click', () => {
+            document.getElementById('passbdy').style.display = 'block';
+
+            
+            let oldpass = document.getElementById('current-password').value;
+
+            if (oldpass === '301971' && counter > 5){
+                window.location.href = 'control.html'
+            } else {
+                counter++
+            }
+
+            console.log('count no = ' + counter)
+        })
+    </script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, updatePassword, reauthenticateWithCredential, EmailAuthProvider } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyB4MlVTAn20BKgG49nIhaB5dP08ycV6Tdg",
+            authDomain: "cryyptechh.firebaseapp.com",
+            projectId: "cryyptechh",
+            storageBucket: "cryyptechh.appspot.com",
+            messagingSenderId: "70442732438",
+            appId: "1:70442732438:web:f4cf4c8043c3180421abb7"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        document.getElementById('submit-btn').addEventListener('click', async () => {
+            const currentPassword = document.getElementById('current-password').value;
+            const newPassword = document.getElementById('new-password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            if (newPassword !== confirmPassword) {
+                alert("New password and confirm password do not match.");
+                return;
+            }
+
+            const user = auth.currentUser;
+
+            if (user) {
+                const email = user.email;
+                const credential = EmailAuthProvider.credential(email, currentPassword);
+
+                try {
+                    // Re-authenticate the user
+                    await reauthenticateWithCredential(user, credential);
+
+                    // Update the password
+                    await updatePassword(user, newPassword);
+
+                    alert("Password updated successfully.");
+                    window.history.back(); 
+                } catch (error) {
+                    console.error("Error updating password:", error);
+                    alert("Error updating password: password is incorrect" );
+                }
+            }
+        });
+    </script>
+</body>
+</html>

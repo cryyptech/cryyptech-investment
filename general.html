@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>cryyptech</title>
+    <style>
+
+      *{
+          padding: 0;
+          margin: 0;
+      }
+
+      body{
+      background-color: rgb(34, 48, 59);
+      padding: 10px 0;
+      font-family: Arial, sans-serif;
+      }
+
+      header{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      font-weight: bold;
+      background-color: rgba(58, 93, 121, 0.932);
+      padding: 15px 0;
+      }
+
+      .back {
+        position: absolute;
+        left: 18px;
+        font-size: 20px;
+        color: rgb(181, 217, 252);
+        cursor: pointer;
+      }
+
+      .container{
+        margin: 60px 0;
+        padding: 0 7px;
+      }
+
+      .body{
+        background-color: rgba(58, 93, 121, 0.932);
+        padding: 1px 9px;
+        margin:  40px 10px;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .innercon{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 16px 10px;
+        border-bottom: 0.5px solid #ccc;
+        font-size: 20px;
+        color: rgb(223, 223, 223);
+      }
+
+      .del{
+        justify-content: center;
+        text-align: center;
+        color: red;
+      }
+
+      .bottom{
+        border: none;
+      }
+
+      .val{
+        margin-right: 13px;
+        color: rgb(0, 0, 0);
+        background-color: transparent;
+        font-size: 15px;
+        font-weight: bold;
+        border: none;
+      }
+
+      select option{
+        background-color: rgb(34, 48, 59);
+        font-size: 11px;
+        margin: 0;
+        padding: 3px -13px;
+      }
+
+      .d{
+        color: rgb(63, 63, 63);
+      }
+
+      footer {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: rgba(58, 93, 121, 0.932);
+        padding: 0 0 5px 0;
+      }
+
+      .footicn {
+        font-size: 23px;
+        color: #030c1d;
+      }
+
+      .footdiv{
+        display: flex;
+        padding: 12px 40px;
+        align-items: center;
+      }
+    </style>
+</head>
+<body>
+    <header>
+      <i class="fa fa-chevron-left back" id="back"></i>
+        <h3>General</h3>
+    </header>
+
+    <div class="container">
+      <div class="body">
+        <div class="innercon bottom">
+          <p>country</p>
+          <select name="country" id="cntry" class="val selcountry">
+            <option value="val1">UNITED STATES</option>
+            <option value="val2">PHILIPPINE</option>
+            <option value="val3">UNITED KINDOM</option>
+            <option value="val4">AUSTRALIA</option>
+          </select>
+        </div>
+      </div>
+      <div class="body">
+        <div class="innercon bottom">
+          <p>Currency</p>
+          <select name="country" id="curncy" class="val selcountry">
+            <option value="val1">USD</option>
+            <option value="val2">PHP</option>
+            <option value="val3">GBP</option>
+            <option value="val4">AUD</option>
+          </select>
+        </div>
+      </div>
+      <div class="body">
+        <div class="innercon bottom">
+          <p>Language</p>
+          <p class="val d">ENGLISH</p>
+        </div>
+      </div>
+    </div>
+    
+    <footer>
+      <div class="footdiv note" onclick="window.location.href = 'notification.html'"><i class="fa-solid fa-bell footicn nt" ></i></div>
+      <div class="footdiv home" onclick="window.location.href = 'wallet.html'"><i class="fa-solid fa-house footicn hm"></i></div>
+      <div class="footdiv set" onclick="window.location.href = 'setting.html'"><i class="fa-solid fa-gear footicn st"></i></div>
+    </footer>
+  </body>
+  <script>
+    const footdivs = document.querySelectorAll('.footdiv');
+
+    footdivs.forEach((footdiv) => {
+      footdiv.addEventListener('mouseover', () => {
+        footdiv.style.backgroundColor = 'rgb(34, 48, 59)';
+        footdiv.querySelector('.footicn').style.color = '#bdd3fd'
+      });
+
+      footdiv.addEventListener('mouseout', () => {
+        footdiv.style.backgroundColor = '';
+        footdiv.querySelector('.footicn').style.color = ''
+      })
+
+      footdiv.addEventListener('click', () => {
+        footdiv.style.backgroundColor = 'rgb(34, 48, 59)';
+        footdiv.querySelector('.footicn').style.color = '#bdd3fd'
+      })
+    })
+    </script>
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+      import { getDatabase, set, ref, get, child } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
+      import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+
+      // Firebase configuration
+      const firebaseConfig = {
+          apiKey: "AIzaSyB4MlVTAn20BKgG49nIhaB5dP08ycV6Tdg",
+          authDomain: "cryyptechh.firebaseapp.com",
+          projectId: "cryyptechh",
+          storageBucket: "cryyptechh.appspot.com",
+          messagingSenderId: "70442732438",
+          appId: "1:70442732438:web:f4cf4c8043c3180421abb7"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const db = getDatabase(app);
+      const auth = getAuth(app);
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const countryDropdown = document.getElementById('cntry');
+        const currencyDropdown = document.getElementById('curncy');
+          
+          const conval = localStorage.getItem('selectedCountry');
+          countryDropdown.value = conval;
+        
+          const curval = localStorage.getItem('selectedCurrency');
+          currencyDropdown.value = curval;
+
+          let selectedCountry = countryDropdown.value;
+          let selectedCurrency = currencyDropdown.value;
+          let selectedCountryText = countryDropdown.options[countryDropdown.selectedIndex].text;
+          let selectedCurrencyText = currencyDropdown.options[currencyDropdown.selectedIndex].text;
+
+
+        // Update variables when a selection is made
+        countryDropdown.addEventListener('change', (event) => {
+          selectedCountryText = event.target.options[event.target.selectedIndex].text;
+        });
+
+        currencyDropdown.addEventListener('change', (event) => {
+          selectedCurrency = event.target.value;
+          selectedCurrencyText = event.target.options[event.target.selectedIndex].text;
+        });
+
+        const submitButton = document.getElementById('back');
+        submitButton.addEventListener('click', (event) => {
+          event.preventDefault();
+
+          // Ensure the user is authenticated
+          onAuthStateChanged(auth, (user) => {
+            if (user) {
+              const userId = user.uid;
+
+              // Save selections to Firebase Realtime Database
+              set(ref(db, 'preferences/' + userId), {
+                country: selectedCountry,
+                  countryText: selectedCountryText, 
+                  currency: selectedCurrency,
+                  currencyText: selectedCurrencyText
+              })
+              .then(() => {
+                console.log('Preferences saved successfully.');
+
+                // Retrieve saved preferences from Firebase and store them in localStorage
+                return get(child(ref(db), 'preferences/' + userId))
+                  .then((snapshot) => {
+                    if (snapshot.exists()) {
+                      const preferences = snapshot.val();
+                      localStorage.setItem('selectedCountry', preferences.country);
+                      localStorage.setItem('selectedCountryText', preferences.countryText);
+                      localStorage.setItem('selectedCurrency', preferences.currency);
+                      localStorage.setItem('selectedCurrencyText', preferences.currencyText); 
+                      console.log('Preferences retrieved and stored in localStorage.');
+                      window.history.back();
+                    } else {
+                      console.log("No preferences data available.");
+                    }
+                  });
+              })
+              .catch((error) => {
+                console.error('Error saving or retrieving preferences:', error);
+              });
+            } else {
+              console.error('User is not authenticated.');
+            }
+          });
+        })
+      });
+
+    </script>
+</body>
+</html>

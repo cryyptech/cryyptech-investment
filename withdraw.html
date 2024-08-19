@@ -1,0 +1,579 @@
+
+
+  <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>cryyptech</title>
+    <style>
+          * {
+              padding: 0;
+              margin: 0;
+          }
+
+          body {
+              background-color: rgb(34, 48, 59);
+              padding: 10px 0;
+              font-family: Arial, sans-serif;
+          }
+
+          header {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: fixed;
+          top: 0;
+          width: 100%;
+          border-bottom: solid 1px rgb(34, 48, 59);
+          background-color: rgba(58, 93, 121, 0.932);
+          padding: 15px 0 0 0;
+          z-index: 1000;
+        }
+
+        .back {
+            position: absolute;
+            left: 16px;
+            margin-bottom: 20px;
+            color: rgb(181, 217, 252);
+            cursor: pointer;
+        }
+
+        h3 {
+            color: white;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .contain{
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          padding: 0;
+        }
+
+        .contain img {
+          height: 80px;
+          width: 80px;
+          margin-bottom: 13px;
+        }
+
+        .contain button {
+          margin-top: 18px;
+          padding: 0.5rem 1.5rem;
+          background-color: #3a5d79;
+          color: rgb(192, 222, 252);
+          border: none;
+          border-radius: 7px;
+        }
+
+        .maintext{
+          font-size: 18px;
+          color: rgb(192, 222, 252);
+        }
+
+          .container {
+              margin: 60px 0;
+              margin-bottom: 10px;
+              background-color: rgba(58, 93, 121, 0.932);
+              padding: 30px 10px 20px 10px;
+          }
+
+          .b {
+              margin: 0;
+              height: 51vh;
+          }
+
+          .container2 {
+              display: flex;
+              justify-content: center;
+              margin-bottom: 30px;
+          }
+
+          #bank1 {
+            display: none;
+          }
+
+          #walletAdress {
+            display: none;
+          }
+
+          .p{
+            display: block;
+          }
+
+          .swap {
+              position: relative;
+              margin: 50px 0;
+              width: 100%;
+              text-align: center;
+          }
+
+          .swap hr {
+              position: relative;
+              z-index: 1;
+          }
+
+          .img {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              z-index: 2;
+              width: 50px;
+              height: 50px;
+              border-radius: 25px;
+              background-color: rgb(34, 48, 59);
+              display: flex;
+              justify-content: center;
+              align-items: center;
+          }
+
+          img {
+              height: 24px;
+              width: 24px;
+          }
+
+          .dropdown {
+              position: relative;
+              display: inline-block;
+              width: 100%;
+              max-width: 400px;
+          }
+
+          .dropdown-btn {
+              background-color: rgba(39, 61, 80, 0.932);
+              color: white;
+              padding: 12px 16px;
+              border: none;
+              cursor: pointer;
+              width: 100%;
+              text-align: left;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              border-radius: 8px;
+          }
+
+          .dropdown-content {
+            display: none;
+              position: absolute;
+              background-color: rgb(34, 48, 59);
+              box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+              z-index: 5;
+              width: 100%;
+              border-radius: 8px;
+              margin-top: 5px;
+          }
+
+          .dropdown.show .dropdown-content{
+              display: block;
+          }
+
+          .dropdown-option {
+              color: white;
+              padding: 12px 16px;
+              text-decoration: none;
+              display: flex;
+              align-items: center;
+              cursor: pointer;
+          }
+
+          .dropdown-option img {
+              height: 20px;
+              width: 20px;
+              margin-right: 10px;
+          }
+
+          .dropdown-option:hover {
+              background-color: rgba(58, 93, 121, 0.932);
+          }
+
+          .gr{
+            color: gray;
+          }
+
+          label {
+              display: block;
+              margin: 10px 0 15px 5px;
+              color: white;
+              font-size: 14px;
+          }
+
+          .changepass {
+              display: block;
+              width: calc(100% - 20px);
+              margin: 0 auto 10px auto;
+              padding: 10px;
+              border-radius: 5px;
+              border: none;
+              font-size: 16px;
+              background-color: rgb(210, 217, 223);
+          }
+
+          .submit-btn {
+              display: block;
+              width: calc(100% - 20px);
+              margin: 0 auto 20px auto;
+              padding: 10px;
+              border-radius: 5px;
+              border: none;
+              font-size: 16px;
+              background-color: rgb(39, 62, 80);
+              color: white;
+              cursor: pointer;
+          }
+
+          .submit-btn:hover {
+              background-color: rgb(33, 55, 73);
+          }
+
+          .customAlert {
+          display: none;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          padding: 20px;
+          background-color: rgba(0, 0, 0, 0.753);
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 1000;
+        }
+
+        .alertCon {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          color: white;
+          background-color: #273e50;
+          padding: 30px 20px;
+          text-align: center;
+          border-radius: 10px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          margin-right: 40px;
+        }
+        hr{
+          width: 100%;
+          color: black;
+          background-color: black;
+          margin: 11px 0;
+        }
+
+        .feebtn{
+          padding: 10px;
+          margin: 30px 10px;
+          margin-bottom: -15px;
+          border-radius: 10px;
+          border: none;
+          background-color: #3a5d79;
+          font-size: 12px;
+          color: white;
+          height: 60px;
+          width: 100px;
+
+        }
+
+        footer {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: rgba(58, 93, 121, 0.932);
+        padding: 0 0 5px 0;
+      }
+
+      .footicn {
+        font-size: 23px;
+        color: #030c1d;
+      }
+
+      .footdiv{
+        display: flex;
+        padding: 12px 40px;
+        align-items: center;
+      }
+
+    </style>
+  </head>
+  <body>
+    <header id="header">
+      <i class="fa fa-chevron-left back" id="back"></i>
+      <h3>Withdraw</h3>
+    </header>
+
+    <div class="contain" id="maincon">
+      <img src="img/empty.png">
+      <p class="maintext">No available asset to be withdrawn</p>
+      <button onclick="window.location.href = 'deposit.html' ">deposit now</button>
+    </div>
+
+    <div class="container" id="container1">
+      <div class="container2">
+        <div class="dropdown">
+          <button class="dropdown-btn" onclick="toggleDropdown()">From: <span>&#x25BC;</span></button>
+          <div class="dropdown-content">
+            <div class="dropdown-option froms" onclick="selectOption('Binance Coin', 'img/bnb.PNG')">
+              <img src="img/bnb.PNG" alt="Binance Coin">
+              <span>Binance Coin</span>
+            </div>
+            <div class="dropdown-option froms" onclick="selectOption('Bitcoin', 'img/bitcoin.png')">
+              <img src="img/bitcoin.png" alt="Bitcoin">
+              <span>Bitcoin</span>
+            </div>
+            <div class="dropdown-option froms" onclick="selectOption('Ethereum', 'img/etherum.png')">
+              <img src="img/etherum.png" alt="Ethereum">
+              <span>Ethereum</span>
+            </div>
+            <div class="dropdown-option froms" onclick="selectOption('USDT Tether', 'img/usdt.png')">
+              <img src="img/usdt.png" alt="USDT Tether">
+              <span>USDT Tether</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="swap" id="swap">
+        <div class="img" id="swap-img">
+          <img src="img/trade.PNG" alt="swap">
+        </div>
+        <hr>
+      </div>
+
+      <div class="container2">
+        <div class="dropdown d2">
+          <button class="dropdown-btn d2a" onclick="toggleDropdowN()">To: <span>&#x25BC;</span></button>
+          <div class="dropdown-content">
+            <div class="dropdown-option tos option1" onclick="option1()">
+              <span>E-wallet</span>
+            </div>
+            <div class="dropdown-option tos option2" onclick="option2()">
+              <span>other Crypto wallet</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container b" id="container3">
+      <div class="container2" id="bank1">
+        <div class="dropdown d3">
+          <button class="dropdown-btn d2b" onclick="toggleDropdowns()">Select E-wallet <span>&#x25BC;</span></button>
+          <div class="dropdown-content">
+            <div class="dropdown-option banks" onclick="selectOptions('Cash App')">
+              <span>Cash App</span>
+            </div>
+            <div class="dropdown-option banks" onclick="selectOptions('PayPal')">
+              <span>PayPal</span>
+            </div>
+            <div class="dropdown-option banks" onclick="selectOptions('Gcash')">
+              <span>Gcash</span>
+            </div>
+            <div class="dropdown-option gr" >
+              <span>Coin.ph</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container2 p wallet" id="walletAdress">
+        <label for="wallet-address">Enter Address</label>
+        <input type="text" id="wallet-address" class="changepass" placeholder="Enter Wallet Address">
+      </div>
+
+      <div class="container2 p" id="container2-5">
+        <label for="Amount">Amount</label>
+        <input type="number" id="Amount" class="changepass" placeholder="Please enter Amount to be withdrawn">
+      </div>
+
+      <button class="submit-btn" id="submit-btn">Confirm</button>
+    </div>
+
+    <footer>
+      <div class="footdiv note" onclick="window.location.href = 'notification.html'"><i class="fa-solid fa-bell footicn nt" ></i></div>
+      <div class="footdiv home" onclick="window.location.href = 'wallet.html'"><i class="fa-solid fa-house footicn hm"></i></div>
+      <div class="footdiv set" onclick="window.location.href = 'setting.html'"><i class="fa-solid fa-gear footicn st"></i></div>
+    </footer>
+  
+    <div class="customAlert" id="alertconn">
+      <div class="alertCon">
+          <p>unable to proceed</p>
+          <hr>
+          <p>A withdrawal fee of <span class="unit" id="unit">$</span><span id="fee">0.00</span> is required to proceed with this operation</p>
+          <div>
+            <button class="feebtn" id="cancel">cancel</button>
+            <button class="feebtn" onclick="window.location.href='deposit.html'">deposit now</button>
+          </div>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById('back').addEventListener('click', () => {
+          window.history.back();
+      });
+
+      const mainbalan = localStorage.getItem('mainbal');
+      if (mainbalan === '0.00') {
+        document.getElementById('maincon').style.display = 'flex';
+        document.getElementById('container1').style.display = 'none';
+        document.getElementById('container3').style.display = 'none';
+      } else {
+        document.getElementById('maincon').style.display = 'none';
+        document.getElementById('container1').style.display = 'block';
+        document.getElementById('container3').style.display = 'block';
+      }
+  
+      const footdivs = document.querySelectorAll('.footdiv');
+  
+      footdivs.forEach((footdiv) => {
+          footdiv.addEventListener('mouseover', () => {
+              footdiv.style.backgroundColor = 'rgb(34, 48, 59)';
+              footdiv.querySelector('.footicn').style.color = '#bdd3fd';
+          });
+  
+          footdiv.addEventListener('mouseout', () => {
+              footdiv.style.backgroundColor = '';
+              footdiv.querySelector('.footicn').style.color = '';
+          });
+  
+          footdiv.addEventListener('click', () => {
+              footdiv.style.backgroundColor = 'rgb(34, 48, 59)';
+              footdiv.querySelector('.footicn').style.color = '#bdd3fd';
+          });
+      });
+  
+      function toggleDropdown() {
+          document.querySelector('.dropdown').classList.toggle('show');
+      }
+  
+      function toggleDropdowN() {
+          document.querySelector('.d2').classList.toggle('show');
+      }
+  
+      function toggleDropdowns() {
+          document.querySelector('.d3').classList.toggle('show');
+      }
+  
+      function selectOption(text, imgSrc) {
+          const button = document.querySelector('.dropdown-btn');
+          button.innerHTML = `From: <img src="${imgSrc}" alt="${text}" style="height: 20px; width: 20px; margin-right: -40px;">${text} <span>&#x25BC;</span>`;
+          toggleDropdown(); // Close the dropdown after selection
+          fromselc = true; // Flag as selected
+      }
+  
+      function selectOptioN(text) {
+          const button = document.querySelector('.d2a');
+          button.innerHTML = `To: <p style="margin-left: 10px;">${text} </p> <span>&#x25BC;</span>`;
+          toggleDropdowN(); // Close the dropdown after selection
+          toselc = true; // Flag as selected
+      }
+  
+      function selectOptions(text) {
+          const button = document.querySelector('.d2b');
+          button.innerHTML = `<p style="margin-left: 10px;">${text} </p> <span>&#x25BC;</span>`;
+          toggleDropdowns(); // Close the dropdown after selection
+          bankselc = true; // Flag as selected
+      }
+  
+      function option1() {
+          selectOptioN('E-wallet');
+          document.getElementById('bank1').style.display = "block";
+          document.getElementById('walletAdress').style.display = "none";
+      }
+  
+      function option2() {
+          selectOptioN('other wallet');
+          document.getElementById('walletAdress').style.display = "block";
+          document.getElementById('bank1').style.display = "none";
+      }
+  
+      document.addEventListener('click', (event) => {
+          const dropdowns = document.querySelectorAll('.dropdown.show');
+          dropdowns.forEach(dropdown => {
+              if (!dropdown.contains(event.target)) {
+                  dropdown.classList.remove('show');
+              }
+          });
+      });
+  
+      // Event listeners for options
+      const fromopt = document.querySelectorAll('.froms');
+      fromopt.forEach(fromn => {
+          fromn.addEventListener('click', () => {
+              fromselc = true;
+          });
+      });
+  
+      const toopt = document.querySelectorAll('.tos');
+      toopt.forEach(ton => {
+          ton.addEventListener('click', () => {
+              toselc = true;
+          });
+      });
+  
+      const bankopt = document.querySelectorAll('.banks');
+      bankopt.forEach(bankn => {
+          bankn.addEventListener('click', () => {
+              bankselc = true;
+          });
+      });
+  
+      const wallet = document.getElementById('wallet-address');
+      const amount = document.getElementById('Amount');
+  
+      const trades = document.getElementById('submit-btn');
+      trades.addEventListener('click', () => {
+          let amountselc = amount.value !== "";
+          if (wallet.value !== "") {
+              bankselc = true;
+          }
+  
+          if (fromselc && toselc && amountselc && bankselc) {
+              document.getElementById('alertconn').style.display = 'flex';
+          } else {
+              alert('Please fill in all required fields before proceeding.');
+          }
+      });
+  
+      document.getElementById('cancel').addEventListener('click', () => {
+          document.getElementById('alertconn').style.display = 'none';
+      });
+
+      const mainbal = localStorage.getItem('withdrawalfee');
+      document.getElementById('fee').innerHTML = mainbal;
+
+      let currency = localStorage.getItem('selectedCurrencyText');
+    let unitsymbol = document.getElementById('unit');
+    let bal = document.getElementById('fee')
+
+    if (currency === "PHP") {
+      unitsymbol.innerHTML = "&#8369;";
+      let bun = bal.innerHTML*56
+      let tal = bun.toFixed(2)
+      bal.innerHTML = tal
+    } else if (currency === "USD") {
+      unitsymbol.innerHTML = "&#36;";
+
+    } else if (currency === "AUD") {
+      unitsymbol.innerHTML = "&#36;";
+      let bun = bal.innerHTML*1.2
+      let tal = bun.toFixed(2)
+      bal.innerHTML = tal
+    } else if (currency === "GBP") {
+      unitsymbol.innerHTML = "&#163;";
+      let bun = bal.innerHTML*0.68
+      let tal = bun.toFixed(2)
+      bal.innerHTML = tal
+    }
+  </script>
+  
+  </body>
+</html>
